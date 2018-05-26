@@ -1,0 +1,28 @@
+.movieItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .movieitem {
+    width: 250px;
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .movieItems {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .movieitem {
+      width: 200px;
+      height: 400px;
+      font-size: 10px;
+      padding: 0;
+      text-align: center;
+    }
+  }
+  .card .card-content {
+    padding: 0;
+  }
+}
