@@ -18,7 +18,7 @@ class Movies extends Component {
   }
   getMovieForList = () => {
     axios.get(this.state.link).then(res => {
-      this.setState({ lists: res.data.results.slice(0, 5) });
+      this.setState({ lists: res.data.results.slice(0, 3) });
     });
   };
   render() {
