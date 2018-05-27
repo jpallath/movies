@@ -25,10 +25,7 @@ class MovieItem extends Component {
   render() {
     let { title, overview, poster_path, imdb_id } = this.state.movie;
     let imdb_link = `https://www.imdb.com/title/${imdb_id}`;
-    let image = "";
-    poster_path
-      ? (image = `http://image.tmdb.org/t/p/w185//${poster_path}`)
-      : null;
+    let image = `http://image.tmdb.org/t/p/w185//${poster_path}`;
     let seen = title
       ? "movieitem card col sm12"
       : "movieitem card col sm12 hidden";

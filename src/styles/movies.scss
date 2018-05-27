@@ -17,6 +17,7 @@
     .movieitem:hover {
       opacity: 1;
       transform: scale(1.2);
+      z-index: 2;
     }
     .card .card-content {
       text-align: center;
@@ -34,6 +35,9 @@
       height: 400px;
       font-size: 10px;
       padding: 0;
+    }
+    .movieitem:hover {
+      opacity: 1;
     }
   }
   .card .card-content {
