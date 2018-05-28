@@ -49,7 +49,7 @@ class MovieList extends Component {
         ) : (
           <h1>{name}</h1>
         )}
-        <p>{description ? description : "here we be"}</p>
+        <p>{description ? description : "..."}</p>
         <div className="movieItems row">{listItems}</div>
       </div>
     );
