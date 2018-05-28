@@ -1,37 +1,47 @@
 .movielist {
-  text-align: center; }
-  .movielist .movieItems {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background: black; }
-    .movielist .movieItems .movieitem {
-      width: 250px;
-      height: 500px;
-      text-align: center;
-      border: black 1px solid;
-      opacity: 0.8;
-      transition: all linear 0.5s; }
-    .movielist .movieItems .movieitem:hover {
-      opacity: 1;
-      transform: scale(1.2);
-      z-index: 2; }
-    .movielist .movieItems .card .card-content {
-      text-align: center; }
+  text-align: center;
+}
+.movielist .movieItems {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: black;
+}
+.movielist .movieItems .movieitem {
+  width: 160px;
+  height: 400px;
+  text-align: center;
+  border: black 1px solid;
+  opacity: 0.8;
+  transition: all linear 0.5s;
+}
+.movielist .movieItems .movieitem:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  z-index: 2;
+}
+.movielist .movieItems .card .card-content {
+  text-align: center;
+}
 
 @media screen and (max-width: 600px) {
   .movieItems {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; }
-    .movieItems .movieitem {
-      width: 200px;
-      height: 400px;
-      font-size: 10px;
-      padding: 0; }
-    .movieItems .movieitem:hover {
-      opacity: 1; }
+    flex-wrap: wrap;
+  }
+  .movieItems .movieitem {
+    width: 167px;
+    height: 400px;
+    font-size: 10px;
+    padding: 0;
+  }
+  .movieItems .movieitem:hover {
+    opacity: 1;
+  }
   .card .card-content {
-    padding: 0; } }
+    padding: 0;
+  }
+}
