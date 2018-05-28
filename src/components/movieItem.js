@@ -40,7 +40,9 @@ class MovieItem extends Component {
             <i className="material-icons right">more_vert</i>
           </span>
           <p>
-            <a href={imdb_link}>IMDB Page</a>
+            <a target="_blank" href={imdb_link}>
+              IMDB Page
+            </a>
           </p>
         </div>
         <div className="card-reveal">

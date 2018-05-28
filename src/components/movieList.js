@@ -23,7 +23,11 @@ class MovieList extends Component {
     let call = `${this.state.movieAPILink}${listId}${this.state.key}`;
     axios.get(call).then(res => {
       let { name, description } = res.data;
-      let listItems = res.data.items.slice(0, 6);
+      let totalValue = 6;
+      {
+        this.props.id ? (totalValue = 6) : (totalValue = 20);
+      }
+      let listItems = res.data.items.slice(0, totalValue);
       this.setState({ list: listItems, name: name, description: description });
     });
   };
