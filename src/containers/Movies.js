@@ -7,19 +7,22 @@ class Movies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      link:
-        "https://api.themoviedb.org/3/movie/550/lists?api_key=3efae5ab7e05aea57a8d360f177b8bc4&language=en-US&page=1",
+      movieId: 550,
+      link: `https://api.themoviedb.org/3/movie/`,
+      key: `api_key=3efae5ab7e05aea57a8d360f177b8bc4&language=en-US&page=1`,
       lists: []
     };
     this.getMovieForList = this.getMovieForList.bind(this);
   }
   componentDidMount() {
-    this.getMovieForList();
+    this.getMovieForList(this.state.movieId);
   }
-  getMovieForList = () => {
-    axios.get(this.state.link).then(res => {
-      this.setState({ lists: res.data.results.slice(0, 3) });
-    });
+  getMovieForList = value => {
+    axios
+      .get(`${this.state.link}${value}/lists?${this.state.key}`)
+      .then(res => {
+        this.setState({ lists: res.data.results.slice(0, 3) });
+      });
   };
   render() {
     let { lists } = this.state;

@@ -1,0 +1,23 @@
+.header .menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  z-index: 100000000;
+  border: 10px solid #2ab7a9;
+  background: black;
+  opacity: 0;
+  top: 2vh;
+  animation: fadein 1s forwards;
+  button {
+    width: 40%;
+  }
+}
+
+@keyframes fadein {
+  100% {
+    opacity: 1;
+  }
+}

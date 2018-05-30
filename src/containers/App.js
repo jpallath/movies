@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import Header from "./Header";
+import Header from "./Header";
 // import Footer from "./Footer";
 import Movies from "./Movies";
 import MovieList from "../components/movieList";
@@ -11,6 +11,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <div className="App">
+            <Header />
             <Route exact path="/" render={props => <Movies />} />
           </div>
           <Route exact path="/list/:id" component={MovieList} />

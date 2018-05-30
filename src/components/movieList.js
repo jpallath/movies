@@ -23,10 +23,7 @@ class MovieList extends Component {
     let call = `${this.state.movieAPILink}${listId}${this.state.key}`;
     axios.get(call).then(res => {
       let { name, description } = res.data;
-      let totalValue = 6;
-      {
-        this.props.id ? (totalValue = 6) : (totalValue = 20);
-      }
+      let totalValue = this.props.id ? 6 : 20;
       let listItems = res.data.items.slice(0, totalValue);
       this.setState({ list: listItems, name: name, description: description });
     });
@@ -34,7 +31,9 @@ class MovieList extends Component {
 
   render() {
     let { name, description } = this.props;
-    name ? null : ({ name, description } = this.state);
+    if (name == null) {
+      let { name, description } = this.state;
+    }
     let { list } = this.state;
     let listItems = list.map(movie => <MovieItem {...movie} key={movie.id} />);
     // let movieItems = movies.map((movie, index) => (
