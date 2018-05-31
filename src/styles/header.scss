@@ -48,3 +48,13 @@
     z-index: 0;
   }
 }
+
+@media screen and (max-width: 600px) {
+  button {
+    color: white;
+    border-color: white;
+  }
+  .menu button {
+    width: 80%;
+  }
+}
