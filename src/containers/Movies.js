@@ -2,27 +2,26 @@ import React, { Component } from "react";
 import MovieList from "../components/movieList";
 import axios from "axios";
 import "../styles/movies.css";
+import { connect } from "react-redux";
 
 class Movies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movieId: 550,
-      link: `https://api.themoviedb.org/3/movie/`,
-      key: `api_key=3efae5ab7e05aea57a8d360f177b8bc4&language=en-US&page=1`,
       lists: []
     };
     this.getMovieForList = this.getMovieForList.bind(this);
   }
   componentDidMount() {
-    this.getMovieForList(this.state.movieId);
+    this.getMovieForList(this.props.movieId);
+  }
+  componentDidUpdate() {
+    this.getMovieForList(this.props.movieId);
   }
   getMovieForList = value => {
-    axios
-      .get(`${this.state.link}${value}/lists?${this.state.key}`)
-      .then(res => {
-        this.setState({ lists: res.data.results.slice(0, 3) });
-      });
+    axios.get(`${this.props.link}${value}${this.props.stash}`).then(res => {
+      this.setState({ lists: res.data.results.slice(0, 3) });
+    });
   };
   render() {
     let { lists } = this.state;
@@ -34,4 +33,12 @@ class Movies extends Component {
   }
 }
 
-export default Movies;
+function mapStateToProps(reduxState) {
+  return {
+    movieId: reduxState.movieId,
+    link: reduxState.link,
+    stash: reduxState.stash
+  };
+}
+
+export default connect(mapStateToProps)(Movies);

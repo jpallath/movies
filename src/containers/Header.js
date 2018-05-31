@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "../styles/header.css";
+import { connect } from "react-redux";
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showMenu: false,
+      firstTime: true,
       popMovies: []
     };
     this.getMovieNav = this.getMovieNav.bind(this);
     this.showMenu = this.showMenu.bind(this);
+    this.changeList = this.changeList.bind(this);
   }
   componentDidMount() {
     this.getMovieNav();
@@ -26,26 +29,52 @@ class Header extends Component {
 
   showMenu = event => {
     event.preventDefault();
-    let newState = this.state.showMenu;
-    this.state.showMenu ? (newState = false) : (newState = true);
-    this.setState({ showMenu: newState });
+    let newState = this.state;
+    this.state.firstTime
+      ? (newState.firstTime = false)
+      : (newState.firstTime = null);
+    this.state.showMenu
+      ? (newState.showMenu = false)
+      : (newState.showMenu = true);
+    this.setState({
+      showMenu: newState.showMenu,
+      firstTime: newState.firstTime
+    });
+  };
+
+  changeList = id => {
+    this.props.dispatch({ type: "CHANGE_MOVIE", movieId: id });
+    this.setState({ showMenu: false });
   };
 
   render() {
     let { popMovies } = this.state;
     let movieFilters = popMovies.map(movie => (
-      <button key={movie.id}>{movie.original_title}</button>
+      <button key={movie.id} onClick={() => this.changeList(movie.id)}>
+        {movie.original_title}
+      </button>
     ));
     return (
       <div className="header">
         <div>Movie Selection!</div>
         <button onClick={this.showMenu}>Menu</button>
+
         {this.state.showMenu ? (
-          <div className="menu">{movieFilters}</div>
-        ) : null}
+          <div className="menu shown">{movieFilters}</div>
+        ) : (
+          <div className="menu hidden" value={this.state.firstTime}>
+            {movieFilters}
+          </div>
+        )}
       </div>
     );
   }
 }
 
-export default Header;
+function mapStateToProps(reduxState) {
+  return {
+    movieId: reduxState.movieId
+  };
+}
+
+export default connect(mapStateToProps)(Header);

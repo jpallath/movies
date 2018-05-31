@@ -1,23 +1,50 @@
-.header .menu {
+.header {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  background: #000;
+  padding: 15px 0;
+}
+.menu {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  position: fixed;
+  position: absolute;
   width: 100%;
-  z-index: 100000000;
-  border: 10px solid #2ab7a9;
-  background: black;
-  opacity: 0;
-  top: 2vh;
-  animation: fadein 1s forwards;
+  top: 5vh;
+  z-index: -1;
   button {
     width: 40%;
   }
 }
-
+.menu.shown {
+  z-index: 100000000;
+  border: 10px solid #2ab7a9;
+  background: black;
+  opacity: 0;
+  animation: fadein 1s forwards;
+}
+.menu.hidden {
+  border: 10px solid #2ab7a9;
+  background: black;
+  animation: fadeout 1s forwards;
+  button {
+    display: none;
+  }
+}
+.menu.hidden[value="true"] {
+  opacity: 0;
+}
 @keyframes fadein {
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  100% {
+    opacity: 0;
+    z-index: 0;
   }
 }
